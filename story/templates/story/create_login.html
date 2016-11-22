@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<title>Authenticate</title>
+</head>
+<body>
+
+<form action = "{% url 'login' %}" method="post">{% csrf_token %}
+{{ loginForm.as_p }}
+<input type = "submit" value="Login">
+</form>
+
+<form action = "{% url 'register' %}" method="post">{% csrf_token %}
+{{ createForm.as_p }}
+<input type = "submit" value = "Register">
+</form>
+
+</body>
+</html>

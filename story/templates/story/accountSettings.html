@@ -1,0 +1,13 @@
+{% load staticfiles %}
+<html>
+<head>
+<title> {{ request.user }}'s settings </title>
+</head>
+<body>
+
+<form action = "{% url 'changePassword' %}" method="post">{% csrf_token %}
+<input type="submit" value="Change Password">
+</form>
+
+</body>
+</html>

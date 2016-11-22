@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{% static 'css/front.css' %}">
+<title>Front Page</title>
+</head>
+
+<body>
+
+<div id = "welcome">
+<p><b> Welcome {{ username }} ! </b></p>
+</div>
+
+{% if user.is_authenticated %}
+<form action="{% url 'postStory' %}" align="center">
+	<input type="submit" value="Post A Story">
+</form>
+{% endif %}
+
+
+{% if not request.user.is_authenticated %}
+<form action = "{% url 'login' %}" align="right">
+<input type = "submit" value="Login">
+</form>
+
+<form action = "{% url 'register' %}" align="right">
+<input type = "submit" value = "Register">
+</form>
+{% endif %}
+
+
+{% if request.user.is_authenticated %}
+<form action = "{% url 'logout' %}" align="right">
+<input type = "submit" value = "Logout">
+</form>
+
+<div id="accountSettings">
+<form action = "{% url 'accountSettings' username=request.user %}" method="post">{% csrf_token %}
+<input type="submit" value="Account Settings">
+</form>
+
+</div>
+
+{% endif %}
+
+{% for post in posts %}
+<div id = "posts" style="background-color:white ; font-size:20px">
+<p> <a href="{% url 'readStory' pk=post.pk %}" style="color:black"> {{ post }} </a> </p>
+<br>
+</div>
+{% endfor %}
+
+</body>
+
+
+</html>

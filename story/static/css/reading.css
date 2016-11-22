@@ -1,0 +1,21 @@
+
+body{
+	color : #000000;
+	padding:15px;
+}
+
+#rating{
+	padding-left : 15px;
+}
+
+#title{
+	text-align: center;
+}
+
+#body{
+	padding-bottom: 30px;
+}
+
+#misc{
+	color : #808080;
+}

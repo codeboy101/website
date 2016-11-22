@@ -1,0 +1,20 @@
+body{
+	color : #000000;
+	padding: 4px;
+}
+
+#welcome{
+	text-align:right;
+	padding-top:2px;
+}
+
+#accountSettings{
+	
+	text-align:right;
+	font-size:12px;
+	
+}
+
+#posts{
+	text-align:center;
+}

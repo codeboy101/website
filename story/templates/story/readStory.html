@@ -1,0 +1,55 @@
+{% load staticfiles %}
+
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{% static 'css/reading.css' %}">
+<title>Read Story</title>
+</head>
+
+<form action = "{% url 'frontPage' %}">
+	<input type = "submit" value="Home">
+</form>
+
+<body>
+
+<div id = "title">
+<h1><p><b> {{ story.title }} </b></p></h1>
+</div>
+
+<div id = "body">
+<h3><p> {{ story.body }} </p></h3>
+</div>
+
+<div id = "misc">
+<p> author : {{ author }} </p>
+<p> rating : {{ story.total_votes }} </p>
+<p> published on : {{ pub_date }} </p>
+</div>
+
+<hr>
+
+<div id= "buttons">
+
+<form action = "{% url 'changeRating' pk=story.pk value=1 %}">
+	<input type = "submit" value="Like">
+</form>
+
+<form action = "{% url 'changeRating' pk=story.pk value=-1 %}">
+	<input type = "submit" value="Dislike">
+</form>
+
+</div>
+
+{% if able_delete %}
+<form action = "{% url 'deleteStory' pk=story.pk %}">
+	<input type = "submit" value="Delete">
+</form>
+{% endif %}
+</hr>
+
+</body>
+
+</html>
